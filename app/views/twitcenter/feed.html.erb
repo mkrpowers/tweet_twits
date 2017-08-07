@@ -1,0 +1,18 @@
+<h1>
+  <% if current_user.avatar.blank? == false %>
+    <%= image_tag current_user.avatar.url, size:75 %>
+  <% else %>
+    <%= image_tag "newbie.png", size: 50 %>  
+  <% end %> 
+  @<%= current_user.username %>'s Twits And Tweets
+  <hr>
+</h1>
+  
+  
+<h2>Here some Twits now!<hr></h2>
+
+<div class="row">
+
+  <%= render @following_tweets %>
+
+</div>

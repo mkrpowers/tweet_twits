@@ -1,0 +1,21 @@
+<h1>Twits You Can Tweet To</h1>
+<hr>
+
+<div class="row">
+<% @users.each do |user| %>
+  <div class="col-sm-4">
+    <div class="well" style="min-height: 140px;">
+    <% if user.avatar.present? %>
+      <%= link_to (image_tag user.avatar.url, class: 'img-responsive', style: 'max-width:100px; float:left'), show_user_url(id: user.id) %>
+    <% else %>
+      <%= link_to (image_tag "newbie.png", class: 'img-responsive', style: 'max-width:100px; float:left'), show_user_url(id: user.id) %>  
+    <% end %> 
+    <%= link_to "@" + user.username, show_user_url(id: user.id)%>  
+    <%= user.name %>, <%= user.location %>
+    <!-- OR
+    <%= link_to "@" + user.username, "/show_user?id=#{user.id}"%>
+    -->   
+    </div>       
+    </div>
+<% end %>
+</div>

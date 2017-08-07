@@ -1,0 +1,23 @@
+  <div class="col-md-10 well">
+    <% if tweet.user.avatar.blank? == false %>
+      <%= image_tag tweet.user.avatar.url, class: 'img-responsive', style: 'float:left; padding: 10px; max-width: 140px;' %>
+    <% else %>
+      <%= image_tag "newbie.png", class: 'img-responsive', style: 'float:left; padding: 10px; max-width: 140px;' %>
+    <% end %>
+    <p><strong>@<%= tweet.user.username %></strong></p>
+    <p style="font-size: 2rem;">
+      <% if Time.now - tweet.created_at > 1.day %>
+        <em><%= tweet.updated_at.strftime('%b, %-d') %></em>
+      <% else %>
+        <em><%= time_ago_in_words(tweet.updated_at)%> ago:</em>
+      <% end %>
+    </p>
+    <p><%= tweet.message.html_safe %></p>
+    <p>
+      <% if current_user.id != tweet.user.id %>
+        |  <%= link_to 'Profile', 'show_user?id=' + tweet.user.id.to_s %>  | 
+        <%= link_to 'Unfollow', 'unfollow?id=' + tweet.user.id.to_s %>  |
+      <% end %>
+    </p>
+  </div>      
+      

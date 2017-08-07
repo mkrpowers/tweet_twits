@@ -1,0 +1,22 @@
+// Place all the styles related to the Tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.twit_list{
+  margin: 8px;
+  padding: 2px;
+  box-shadow: 2px 2px 5px #000;
+}
+
+.twit_pic{
+  padding-right: 8px;
+}
+
+#feed_info p{
+  font-size: 12px;
+  line-height: .7;
+}
+
+#feed_info{
+  padding-top: 8px;
+}
