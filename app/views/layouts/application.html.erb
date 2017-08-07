@@ -24,6 +24,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
           <li><%= link_to "Twit Now", new_tweet_path %></li>
           <li><%= link_to "Your Profile", show_user_url + "?id=" + current_user.id.to_s %></li>
           <li><%= link_to "All Twits", all_users_url %></li>
@@ -31,7 +32,6 @@
           <li><%= link_to "Followers", followers_url %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <% if current_user.avatar.blank? == false %>
@@ -43,8 +43,9 @@
                 <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
-          <% end %>
         </ul>
+        <% end %>
+        
       </div>
     </div>
   </nav>
